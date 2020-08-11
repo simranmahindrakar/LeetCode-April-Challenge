@@ -1,0 +1,37 @@
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet <Integer> seen = new HashSet(); // keep track of all the sums seen so far. if sum repeats, we are in a loop. o/p false
+        while(n != 1)
+        {
+            int current = n;
+            int sum = 0;
+            while( current != 0)
+            {
+                sum += (current%10) * (current%10);
+                current /= 10;  //truncate the units digit
+            }
+            if(seen.contains(sum))
+            {
+                return false;
+            }
+            seen.add(sum);
+            n = sum;
+        }
+        return true;
+        
+    }
+}
+
+Problem : Happy Number
+First we take care of the finite loop problem. We cannot have a program that computes the sum infinitely. To check that, I will declare a HashSet "seen" which will store the
+first instance of a new sum. If the sum appears again, we are in a loop, we will never get a 1 and we return false immediately.
+Now, we need to work with int input "n" until we reach 1 (in case of a happy number), so we write a while() loop.
+Store n in int current and initialise sum to 0 (which will store the sum for the current integer)
+For the sum, we have to break down "current" into its digits, square them and add.
+current%10 gives the units digit of current. We square the number and add it to the sum.
+current = cuurent/10 will update current by truncating the units digit which is already added to sum
+Once we are out of the while() loop for current, we have a sum for the square of the digits of current.
+Check if the HashSet "seen" contains the sum, if yes, we are in a loop, return false
+else add the sum to the HashSet.
+Update the input integer n to sum (sum is the new number that we will work with because thats what the question demands)
+After the update, if n ==1, the while condition fails and we return true.
