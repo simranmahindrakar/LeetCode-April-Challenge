@@ -1,0 +1,34 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet <Integer> set = new HashSet();   //creating a new HashSet of integers named "set"
+        for (int i : nums)
+        {
+            if(set.contains(i))   //if set already contains int i
+            {
+                set.remove(i);     //remove it
+            }
+            else 
+            {
+                set.add(i);   //if seeing it for the first time add i to set
+            }
+        }
+        for(int i : set)
+        {
+            return i;
+        }
+        return -1;   //invalid input 
+    }
+}
+
+Problem name: Single Number
+Although the problem asks us to solve it without using any extra memory, I'm going to ignore it for now and try to implement it in an intuitive manner. So what we have to do is
+basically just run through the array/vector and keep track of all the elements that appear twice except for one element, single it out and print it.
+For this problem I'm going to use the HashSet data structure in Java.
+Execution steps:
+1. Declare a HashSet data structure named "set"
+2. Run a loop through the given input array "nums"
+3. If curent element in input array "nums" is already present in "set" I remove it from "set"
+4. else I add it to "set"
+In this way I remove any element (from the HashSet) that appears more than once in the input array
+Finally the HashSet will contain one single number which is the required output.
+The final return statement is for any invalid input/input wherein every number has a partner.
