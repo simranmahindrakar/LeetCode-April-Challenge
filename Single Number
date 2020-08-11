@@ -32,3 +32,14 @@ Execution steps:
 In this way I remove any element (from the HashSet) that appears more than once in the input array
 Finally the HashSet will contain one single number which is the required output.
 The final return statement is for any invalid input/input wherein every number has a partner.
+
+Sample input:
+[4,1,2,1,2]
+Output : 4
+steps:
+add 4 to "set"
+add 1 to "set"
+add 2 to "set"
+1 already exists in "set" so remove it
+2 already exists in "set" so remove it
+return whatver thats left in "set", which is 4.
