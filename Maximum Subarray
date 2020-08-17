@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int current_max = nums[0];
+        int global_max = nums[0];
+        for(int i=1; i<nums.size(); i++)
+        {
+            current_max = max(current_max + nums[i] , nums[i]);
+            global_max = max(current_max , global_max);
+        }
+        return global_max;
+    }
+};
+
+
+***************************************************************************************************
+The idea is to keep track of sum till the 
