@@ -1,0 +1,40 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        //Solution if we use more space
+        int n = nums.size();
+        vector<int> answer;
+        for(int i : nums)
+        {
+            if(i != 0)
+            {
+                answer.push_back(i);
+            }
+        }
+        answer.resize(n,0);
+        return answer;
+    }
+};
+---------------------------------------------------------------
+//constant space solution
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        //Solution for constant space use basically no extra space
+        int next = 0;   //a pointer to the vector starting at index 0
+        for(int i : nums)
+        {
+            if(i != 0)
+            {
+                nums[next] = i;  //every time we find a non-zero int we place it in contiguous memory in the vector (over-writing values in vector)
+                next++;
+            } //hence the vector upto index next will consist of all non-zero integers in relative orer
+        }
+        for(int i=next; i<nums.size(); i++)
+        {
+            nums[i] = 0;   //fill the remaining cells with 0. we start at int = next because when the loop breaks, next will be incremented already
+        }
+        
+    }
+};
