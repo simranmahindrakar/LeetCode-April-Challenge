@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if(prices.size() == 0)
+            return 0; //edge cases
+        int profit = 0; //to keep track of the maximum profit and return this value.
+        for(int i=0; i<(prices.size() -1); i++)
+        {
+            if(prices[i+1]>prices[i])
+                profit += prices[i+1] - prices[i];  //we sell the stock whenevr the if statement is true
+        }
+        return profit;
+    }
+};
+
+*****************************************************************************************************************************
+In this problem we only care about making a profit. No limit on the number of transactions.
+We run a loop through the prices array and everytime we find that the next price is greater than the current price, we sell it and make a profit equal to the diffrence of
+the prices. Sum up all the possible profits and return the profit variable.
