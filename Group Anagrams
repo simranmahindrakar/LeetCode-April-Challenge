@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        map<string , vector<string> > m;
+        for(string s : strs)
+        {
+            string s2 = s;
+            sort(s2.begin(), s2.end());
+            m[s2].push_back(s);
+        }
+        vector<vector<string> > v;
+        for(auto p : m)
+        {
+            v.push_back(p.second);
+        }
+        return v;
+    }
+};
+
+***************************************************************************************************
+Two words form an anagram if they have the same characters. Or one word is a rearrangement of the other.
+In this problem we will convert each of the strings to its "CANONICAL FORM" by sorting it. We will group all those strings that map to a particular canonical form.
+Declare a map whose key value is a string and the mapped value is a vector of strings.
+For each string in input, sort it and push it into the map.
+Example for sorted string "aet" we have m["aet"] = {"tea","ate","eat"}
+The sorted string is the key and the input strings will be mapped to it as a vector<string>.
+
+Declare a vector which is a vector of strings (this is the required output type)
+Now iterate over pairs like ("aet" = {"tea","ate","eat"}), from which we need/take only the second element i.e. the group/vector of strings and add it to vector v (output vector).
